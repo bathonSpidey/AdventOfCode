@@ -23,7 +23,7 @@ class TreeCounterTests(unittest.TestCase):
                 self.assertEqual(TreeCounter().count(value), expected)
 
     def test_given_case(self):
-        value= [[3, 0, 3, 7, 3],
+        value = [[3, 0, 3, 7, 3],
          [2, 5, 5, 1, 2],
          [6, 5, 3, 3, 2],
          [3, 3, 5, 4, 9],
@@ -31,13 +31,16 @@ class TreeCounterTests(unittest.TestCase):
         self.assertEqual(TreeCounter().count(value), 21)
 
     def test_amazon(self):
+        self.assertEqual(TreeCounter().count(self.read_forest()), 1679)
+
+    def read_forest(self):
         with open('big_test.txt', 'r') as file:
             lines = file.readlines()
         forest = []
         for line in lines:
             row = [int(digit) for digit in line.strip()]
             forest.append(row)
-        self.assertEqual(TreeCounter().count(forest), 1679)
+        return forest
 
     def test_highest_scenic_score_of_forest(self):
         value = [[3, 0, 3, 7, 3],
@@ -46,6 +49,9 @@ class TreeCounterTests(unittest.TestCase):
                  [3, 3, 5, 4, 9],
                  [3, 5, 3, 9, 0]]
         self.assertEqual(TreeCounter().highest_scenic_score(value), 8)
+
+    def test_highest_scenic_score_amazon(self):
+        self.assertEqual(TreeCounter().highest_scenic_score(self.read_forest()), 536625)
 
 
 if __name__ == '__main__':
