@@ -39,6 +39,14 @@ class TreeCounterTests(unittest.TestCase):
             forest.append(row)
         self.assertEqual(TreeCounter().count(forest), 1679)
 
+    def test_highest_scenic_score_of_forest(self):
+        value = [[3, 0, 3, 7, 3],
+                 [2, 5, 5, 1, 2],
+                 [6, 5, 3, 3, 2],
+                 [3, 3, 5, 4, 9],
+                 [3, 5, 3, 9, 0]]
+        self.assertEqual(TreeCounter().highest_scenic_score(value), 8)
+
 
 if __name__ == '__main__':
     unittest.main()

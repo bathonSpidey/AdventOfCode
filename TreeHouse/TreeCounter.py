@@ -17,3 +17,26 @@ class TreeCounter:
             return 1
         return 0
 
+    def highest_scenic_score(self, forest):
+        score=1
+        previous_score=1
+        left_view=0
+
+        for row in range(1, len(forest) - 1):
+            for column in range(1, len(forest[0]) - 1):
+                current_tree = forest[row][column]
+                if  not self.add_tree(column, forest, row):
+                    for num in forest[row][:column]:
+                        if num < current_tree:
+                            left_view += 1
+
+    def count_views(self, neighbors, current_tree ):
+        count=0
+        for tree in neighbors:
+            if tree<current_tree:
+                count+=1
+        return count
+
+
+
+
